@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kenangan Kita Romantis</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(270deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
+      background-size: 800% 800%;
+      animation: gradientAnimation 30s ease infinite;
+      color: #3b1e0f;
+      margin: 0;
+      padding: 30px;
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+    @keyframes gradientAnimation {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    h1 {
+      text-align: center;
+      color: #6b2e2e;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px #ffd6d6;
+      animation: fadeInText 2s ease forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInText {
+      to {opacity: 1;}
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .item {
+      background: #fff0f5cc;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(107, 46, 46, 0.3);
+      padding: 18px;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .item img {
+      width: 100%;
+      border-radius: 14px;
+      display: block;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 10px rgba(107, 46, 46, 0.4);
+      transition: transform 0.4s ease;
+    }
+    .item img:hover {
+      transform: scale(1.08);
+    }
+    .caption {
+      font-weight: 700;
+      color: #802020;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      user-select: none;
+    }
+    .caption .heart {
+      color: #d93025;
+      margin-left: 6px;
+      animation: beat 1.2s infinite;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
+    .quote {
+      font-style: italic;
+      color: #a84b4b;
+      font-size: 1rem;
+      line-height: 1.4;
+      max-width: 280px;
+      user-select: none;
+    }
+
+    /* Lightbox styles */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 192, 203, 0.9);
+    }
+
+    /* Floating hearts animation */
+    .floating-heart {
+      position: fixed;
+      font-size: 1.8rem;
+      color: #e63946;
+      user-select: none;
+      animation: floatUp 5s linear forwards;
+      pointer-events: none;
+      opacity: 0.85;
+      z-index: 9999;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Kenangan Kita <span class="heart">❤️</span></h1>
+  <div class="gallery">
+    <div class="item">
+      <img src="foto-pertemuan-pertama.jpg" alt="Pertemuan Bersama" />
+      <div class="caption">Pertemuan Bersama <span class="heart">❤️</span></div>
+      <div class="quote">"Awal yang sederhana, tapi hatiku tahu ini istimewa."</div>
+    </div>
+    <div class="item">
+      <img src="kencan-pertama.jpg" alt="Kencan Pertama" />
+      <div class="caption">Kencan Pertama <span class="heart">❤️</span></div>
+      <div class="quote">"Detik-detik itu, kita mulai menulis cerita cinta yang abadi."</div>
+    </div>
+    <div class="item">
+      <img src="waktu-yang-dihabiskan-bersama.jpg" alt="Waktu Bersama Kamu" />
+      <div class="caption">Waktu yang Dihabiskan Bersama Kamu <span class="heart">❤️</span></div>
+      <div class="quote">"Setiap momen denganmu adalah hadiah terindah dalam hidupku."</div>
+    </div>
+    <div class="item">
+      <img src="jalan-jalan-bersama.jpg" alt="Jalan Jalan Bersama" />
+      <div class="caption">Jalan Jalan Bersama <span class="heart">❤️</span></div>
+      <div class="quote">"Langkah kita menyatu, menjelajah dunia penuh cinta."</div>
+    </div>
+    <div class="item">
+      <img src="momen-sederhana.jpg" alt="Momen Sederhana" />
+      <div class="caption">Momen Sederhana <span class="heart">❤️</span></div>
+      <div class="quote">"Kebahagiaan sejati ada di pelukan kecil yang kita bagi."</div>
+    </div>
+    <div class="item">
+      <img src="impian-aku-yaitu-sama-kamu.jpg" alt="Impian Aku Yaitu Sama Kamu" />
+      <div class="caption">Impian Aku Yaitu Sama Kamu <span class="heart">❤️</span></div>
+      <div class="quote">"Bersamamu, aku percaya impianku menjadi nyata."</div>
+    </div>
+  </div>
+
+  <!-- Lightbox container -->
+  <div id="lightbox">
+    <img src="" alt="Preview Gambar" />
+  </div>
+
+  <script>
+    window.addEventListener('load', () => {
+      alert('Selamat datang di galeri kenangan kita ❤️');
+      const items = document.querySelectorAll('.item');
+      items.forEach((item, index) => {
+        setTimeout(() => {
+          item.classList.add('visible');
+        }, index * 200);
+      });
+      // Start floating hearts every 1.2s
+      setInterval(createFloatingHeart, 1200);
+    });
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    const galleryItems = document.querySelectorAll('.gallery .item img');
+
+    galleryItems.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target !== lightboxImg) {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+        lightboxImg.alt = '';
+      }
+    });
+
+    function createFloatingHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.textContent = '❤️';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (Math.random() * 16 + 14) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+  </script>
+</body>
+</html>
